@@ -28,7 +28,7 @@ namespace sqlmap_gui.SQLMapHelper
         /// <returns></returns>
         public string GetArguInvalidLogical(string payload)
         {
-            return " --invalid-logical " + payload + " ";
+            return " --invalid-logical \"" + payload + "\" ";
         }
 
         /// <summary>
