@@ -41,11 +41,11 @@ namespace sqlmap_gui.SQLMapHelper
         /// <summary>
         /// 此参数是把数据以POST方式提交，sqlmap会像检测GET参数一样检测POST的参数。
         /// </summary>
-        /// <param name="postdata">不带</param>
+        /// <param name="postdata">自带引号</param>
         /// <returns></returns>
         public string GetArguData(string postdata)
         {
-            return " --data=" + postdata + " ";
+            return " --data=\"" + postdata + "\" ";
         }
 
         /// <summary>
@@ -53,21 +53,21 @@ namespace sqlmap_gui.SQLMapHelper
         /// 需要配合--data参数
         /// --data="query=foobar;id=1" --param-del=";"
         /// </summary>
-        /// <param name="spliter"></param>
+        /// <param name="spliter">自带引号</param>
         /// <returns></returns>
         public string GetArguDataSpliter(string spliter)
         {
-            return " --param-del=" + spliter + " ";
+            return " --param-del=\"" + spliter + "\" ";
         }
 
         /// <summary>
         /// 可以通过抓包把cookie获取到，复制出来，然后加到--cookie参数里。
         /// </summary>
-        /// <param name="cookie"></param>
+        /// <param name="cookie">自带引号</param>
         /// <returns></returns>
         public string GetArguCookie(string cookie)
         {
-            return " --cookie " + cookie + " ";
+            return " --cookie \"" + cookie + "\" ";
         }
 
         /// <summary>
@@ -84,11 +84,11 @@ namespace sqlmap_gui.SQLMapHelper
         /// 在有些时候，需要根据某个参数的变化，而修改另个一参数，
         /// 才能形成正常的请求，这时可以用--eval参数在每次请求时根据所写python代码做完修改后请求。
         /// </summary>
-        /// <param name="pycode"></param>
+        /// <param name="pycode">自带引号</param>
         /// <returns></returns>
         public string GetArguEval(string pycode)
         {
-            return " --eval=" + pycode + " ";
+            return " --eval=\"" + pycode + "\" ";
         }
 
 
@@ -97,33 +97,33 @@ namespace sqlmap_gui.SQLMapHelper
         /// 当大于等于3的时候也会测试User-Agent和HTTP Referer头的值。但是你可以手动用-p参数设置想要测试的参数。
         /// 例如： -p "id,user-anget"
         /// </summary>
-        /// <param name="argu"></param>
+        /// <param name="argu">自带引号,逗号隔开</param>
         /// <returns></returns>
         public string GetArguSkip(string argu)
         {
-            return " -p " + argu + " ";
+            return " -p \"" + argu + "\" ";
         }
 
         /// <summary>
         /// 当你使用--level的值很大但是有个别参数不想测试的时候可以使用--skip参数。
         ///例如：--skip="user-angent.referer"
         /// </summary>
-        /// <param name="argu"></param>
+        /// <param name="argu">自带引号</param>
         /// <returns></returns>
         public string GetArguP(string argu)
         {
-            return " --skip=" + argu + " ";
+            return " --skip=\"" + argu + "\" ";
         }
 
         /// <summary>
         /// 默认情况系sqlmap会自动的探测web应用后端的数据库是什么，sqlmap支持的数据库有：
-        ///MySQL、Oracle、PostgreSQL、Microsoft SQL Server、Microsoft Access、SQLite、Firebird、Sybase、SAP MaxDB、DB2
+        /// MySQL、Oracle、PostgreSQL、Microsoft SQL Server、Microsoft Access、SQLite、Firebird、Sybase、SAP MaxDB、DB2
         /// </summary>
-        /// <param name="dbms">须带引号</param>
+        /// <param name="dbms">自带引号</param>
         /// <returns></returns>
         public string GetArguDBMS(string dbms)
         {
-            return " --dbms " + dbms + " ";
+            return " --dbms \"" + dbms + "\" ";
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace sqlmap_gui.SQLMapHelper
         /// <returns></returns>
         public string GetArguOS(string os)
         {
-            return " --os " + os + " ";
+            return " --os \"" + os + "\" ";
         }
     }
 }

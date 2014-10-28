@@ -70,6 +70,7 @@ namespace sqlmap_gui.SQLMapHelper
 
 
         /// <summary>
+        /// --level
         /// 共有五个等级，默认为1，sqlmap使用的payload可以在xml/payloads.xml中看到，你也可以根据相应的格式添加自己的payload。
         ///这个参数不仅影响使用哪些payload同时也会影响测试的注入点，GET和POST的数据都会测试，
         ///HTTP Cookie在level为2的时候就会测试，HTTP User-Agent/Referer头在level为3的时候就会测试。
@@ -79,11 +80,8 @@ namespace sqlmap_gui.SQLMapHelper
         /// <returns></returns>
         public string GetArguLevel(int level)
         {
-            if (level > 5 || level < 0)
-            {
-                throw new ArgumentException();
-            }
-            return " --level " + level.ToString() + " ";
+            var v = level > 4 || level < 0 ? 1 : level;
+            return " --level " + v.ToString() + " ";
         }
 
         /// <summary>
@@ -95,11 +93,8 @@ namespace sqlmap_gui.SQLMapHelper
         /// <returns></returns>
         public string GetArguRisk(int level)
         {
-            if (level > 3 || level < 0)
-            {
-                throw new ArgumentException();
-            }
-            return " --risk " + level.ToString() + " ";
+            var v = level > 3 || level < 0 ? 1 : level;
+            return " --risk " + v.ToString() + " ";
         }
 
         /// <summary>
